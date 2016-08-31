@@ -16,7 +16,11 @@ app.directive('validate', function() {
                 var ngInput = formCtrl[inputName];
                 var valid = ngInput.$valid;
 
-                valid ? el.removeClass('has-error') : el.addClass('has-error');
+                if(valid) {
+                  el.removeClass('has-error').addClass('has-success')
+                } else {
+                  el.addClass('has-error').removeClass('has-success')
+                }
             });
         }
     }
