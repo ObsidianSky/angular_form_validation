@@ -1,6 +1,31 @@
-.form .form-group .help-block {
+.help-block {
     display: none;
 }
-.form .form-group.has-error .help-block {
-    display: block;
+
+.has-error .ng-invalid-required ~ .help-block.error-required {
+  display: block;
+}
+
+.has-error .ng-invalid-email ~ .help-block.error-email {
+  display: block;
+}
+
+.has-error .ng-invalid-date ~ .help-block.error-date {
+  display: block;
+}
+
+.has-error .ng-invalid-minlength ~ .help-block.error-minlenght {
+  display: block;
+}
+
+.has-error .ng-invalid-maxlength ~ .help-block.error-maxlength {
+  display: block;
+}
+
+.has-error .ng-invalid-minlength ~ .help-block.error-minlength {
+  display: block;
+}
+
+.has-error .ng-invalid-compare-to ~ .help-block.error-compare-to {
+  display: block;
 }

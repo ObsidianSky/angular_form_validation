@@ -8,56 +8,71 @@
 </head>
 <body ng-app="app">
   <div class="container" ng-controller="regForm">
-    <h1>Registration</h1>
+    <h1>Sign up if you like seals.</h1>
     <div class="row">
       <div class="col-xs-12 col-sm-6">
         <div class="panel panel-default">
           <div class="panel-heading">Registration form</div>
           <div class="panel-body">
             <form name="regForm" novalidate class="form">
-                <div class="form-group" validate>
-                    <label class="control-label" for="inputEmail">Email address</label>
-                    <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="user.email" ng-required="true">
-                    <span class="help-block">Enter valid email</span>
+              <div class="row">
+                <div class="form-group col-xs-12 col-sm-6" validate>
+                  <label class="control-label" for="inputEmail">Email address</label>
+                  <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="user.email" ng-required="true">
+                  <span class="help-block error-required">Email is required</span>
+                  <span class="help-block error-email">Email is not valid</span>
                 </div>
-                <div class="form-group" validate>
-                    <label class="control-label" for="inputName">Name</label>
-                    <input type="text" name="name" class="form-control" id="inputName" placeholder="Name" ng-model="user.name" ng-required="true">
-                    <span class="help-block">Ender name</span>
+                <div class="form-group col-xs-12 col-sm-6" validate>
+                  <label class="control-label" for="inputName">Name</label>
+                  <input type="text" name="name" class="form-control" id="inputName" placeholder="Name" ng-model="user.name" ng-required="true">
+                  <span class="help-block error-required">Name is required</span>
                 </div>
-                <div class="form-group" validate>
-                    <label class="control-label" for="inputPassword1">Password</label>
-                    <input type="password" name="password1" class="form-control" id="inputPassword1" placeholder="Password" ng-model="user.password" ng-required="true">
-                    <span class="help-block">Password required</span>
+              </div>
+              <div class="row">
+                <div class="form-group col-xs-12 col-sm-6" validate>
+                  <label class="control-label" for="inputPassword1">Password</label>
+                  <input type="password" name="password1" class="form-control" id="inputPassword1" placeholder="Password" ng-model="user.password" ng-required="true">
+                  <span class="help-block">Password is required</span>
                 </div>
-                <div class="form-group" validate>
-                    <label class="control-label" for="inputPassword2">Password confirmation</label>
-                    <input type="password" name="password2" class="form-control" id="inputPassword2" placeholder="Password again" ng-model="user.passwordConfirmation" ng-required="true">
-                    <span class="help-block">Password confirmation required</span>
+                <div class="form-group col-xs-12 col-sm-6" validate>
+                  <label class="control-label" for="inputPassword2">Password confirmation</label>
+                  <input type="password" name="password2" class="form-control" id="inputPassword2" placeholder="Password again" ng-model="user.passwordConfirmation" ng-required="true" compare-to="user.password">
+                  <span class="help-block error-required">Password confirmation is required</span>
+                  <span class="help-block error-compare-to">Passwords must match</span>
                 </div>
-                <div class="form-group" validate>
-                    <label class="control-label" for="inputCountry">Country</label>
-                    <select class="form-control" name="country" id="inputCountry" ng-model="user.country" ng-required="true">
-                        <option ng-repeat="country in countries" value="{{country}}">{{country}}</option>
-                    </select>
-                    <span class="help-block">Select country</span>
+              </div>
+              <div class="row">
+                <div class="form-group col-xs-12 col-sm-6" validate>
+                  <label class="control-label" for="inputCountry">Country</label>
+                  <select class="form-control" name="country" id="inputCountry" ng-model="user.country" ng-required="true">
+                      <option ng-repeat="country in countries" value="{{country}}">{{country}}</option>
+                  </select>
+                  <span class="help-block error-required">Country is required</span>
                 </div>
-                <div class="form-group" validate>
-                    <label class="control-label" for="inputPostalIndex">Postal index</label>
-                    <input type="number" name="postalIndex" ng-minlength="4" ng-maxlength="6" class="form-control" id="inputPostalIndex" placeholder="Postal index" ng-model="user.postalIndex" ng-required="true">
-                    <span class="help-block">Enter valid postal index</span>
+                <div class="form-group col-xs-12 col-sm-6" validate>
+                  <label class="control-label" for="inputPostalIndex">Postal index</label>
+                  <input type="number" name="postalIndex" ng-minlength="4" ng-maxlength="6" class="form-control" id="inputPostalIndex" placeholder="Postal index" ng-model="user.postalIndex" ng-required="true">
+                  <span class="help-block error-required">Postal index is required</span>
+                  <span class="help-block error-minlength">Minimal length is 4</span>
+                  <span class="help-block error-maxlength">Maximal length is 6</span>
                 </div>
-                <div class="form-group" validate>
-                    <label class="control-label" for="inputBirthday">Birthday</label>
-                    <input type="date" name="birthday" class="form-control" id="inputBirthday" placeholder="Date" ng-model="user.birthday" ng-required="true">
-                    <span class="help-block">Select birthday</span>
+              </div>
+              <div class="row">
+                <div class="form-group col-xs-12" validate>
+                  <label class="control-label" for="inputBirthday">Birthday</label>
+                  <input type="date" name="birthday" class="form-control" id="inputBirthday" placeholder="Date" ng-model="user.birthday" ng-required="true">
+                  <span class="help-block error-required">Birthday is requried</span>
+                  <span class="help-block error-date">Birthday is not valid</span>
                 </div>
+              </div>
+              <div class="text-center">
                 <div class="checkbox">
-                    <label class="control-label">
-                        <input type="checkbox" name="" ng-model="user.agreed" ng-required="true"> I agree to the terms & conditions
-                    </label>
+                  <label class="control-label">
+                    <input type="checkbox" name="" ng-model="user.agreed" ng-required="true"> I agree to the terms & conditions
+                  </label>
                 </div>
                 <button type="submit" class="btn btn-default" ng-class="regForm.$invalid ? 'btn-default' : 'btn-success'" ng-disabled="regForm.$invalid">Submit</button>
+              </div>
             </form>
           </div>
         </div>
