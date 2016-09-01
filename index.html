@@ -60,9 +60,9 @@
               <div class="row">
                 <div class="form-group col-xs-12" validate>
                   <label class="control-label" for="inputBirthday">Birthday</label>
-                  <input type="date" name="birthday" class="form-control" id="inputBirthday" placeholder="Date" ng-model="user.birthday" ng-required="true">
+                  <input type="text" ng-pattern="/^([0-2]\d|3[01])\.(0\d|1[012])\.(\d{4})$/" name="birthday" class="form-control" id="inputBirthday" placeholder="dd.mm.yyyy" ng-model="user.birthday" ng-required="true">
                   <span class="help-block error-required">Birthday is requried</span>
-                  <span class="help-block error-date">Birthday is not valid</span>
+                  <span class="help-block error-pattern">Birthday is not valid</span>
                 </div>
               </div>
               <div class="text-center">
@@ -93,7 +93,7 @@
               <b>Postal index</b>: {{user.postalIndex}}
             </div>
             <div class="col-xs-12 col-sm-6">
-              <b>Birthday</b>: {{user.birthday | date: "MM-dd-yyyy"}}
+              <b>Birthday</b>: {{user.birthday}}
             </div>
           </div>
         </div>

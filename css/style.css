@@ -10,7 +10,7 @@
   display: block;
 }
 
-.has-error .ng-invalid-date ~ .help-block.error-date {
+.has-error .ng-invalid-pattern ~ .help-block.error-pattern {
   display: block;
 }
 
