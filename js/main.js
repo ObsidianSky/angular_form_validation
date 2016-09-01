@@ -14,9 +14,10 @@ app.directive('validate', function() {
 
             input.bind('blur', function() {
                 var ngInput = formCtrl[inputName];
-                var valid = ngInput.$valid;
 
-                if(valid) {
+                if(ngInput.$pristine) return;
+
+                if(ngInput.$valid) {
                   el.removeClass('has-error').addClass('has-success')
                 } else {
                   el.addClass('has-error').removeClass('has-success')
@@ -24,4 +25,23 @@ app.directive('validate', function() {
             });
         }
     }
+});
+
+app.directive('compareTo', function() {
+    return {
+        require: "ngModel",
+        scope: {
+            otherModelValue: "=compareTo"
+        },
+        link: function(scope, element, attributes, ngModel) {
+             
+            ngModel.$validators.compareTo = function(modelValue) {
+                return modelValue == scope.otherModelValue;
+            };
+ 
+            scope.$watch("otherModelValue", function() {
+                ngModel.$validate();
+            });
+        }
+    };
 });
